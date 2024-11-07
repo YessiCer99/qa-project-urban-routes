@@ -15,6 +15,7 @@ class TestUrbanRoutes:
         capabilities = DesiredCapabilities.CHROME
         capabilities["goog:loggingPrefs"] = {'performance': 'ALL'}
 
+        #CORRECCION Y CAMBIO DE CODIGO
         cls.driver = webdriver.Chrome()
         cls.driver.get(data.urban_routes_url)
         cls.routes_page = UrbanRoutesPage(cls.driver)
@@ -26,6 +27,7 @@ class TestUrbanRoutes:
         assert self.routes_page.get_from() == data.address_from
         assert self.routes_page.get_to() == data.address_to
 
+    # CORRECCIÓN
     def test_select_comfort_tariff(self):
         self.routes_page.click_request_taxi()
         self.routes_page.select_comfort_tariff()
@@ -45,28 +47,33 @@ class TestUrbanRoutes:
         credit_card_element = self.routes_page.driver.find_element(*self.routes_page.credit_card_text)
         assert credit_card_element.text == "Tarjeta", f"El texto de la tarjeta '{credit_card_element.text}' no coincide con 'Tarjeta'."
 
+    # CORRECCIÓN
     def test_message_for_driver(self):
         self.routes_page.write_message_for_driver(data.message_for_driver)
         comment_element = self.routes_page.driver.find_element(*self.routes_page.comment_input)
         assert comment_element.get_attribute("value") == data.message_for_driver, \
             f"El comentario '{comment_element.get_attribute('value')}' no coincide con '{data.message_for_driver}'."
 
+    # CORRECCIÓN
     def test_request_blanket_and_tissues(self):
         self.routes_page.request_blanket_and_tissues()
         blanket_tissues_checkbox = self.routes_page.driver.find_element(*self.routes_page.request_blanket_tissues_checkbox)
         assert blanket_tissues_checkbox.is_selected(), "El checkbox de mantas y pañuelos no está seleccionado."
 
+    # CORRECCIÓN
     def test_request_two_ice_creams(self):
         self.routes_page.request_two_ice_creams()
         counter_element = self.routes_page.driver.find_element(*self.routes_page.counter_value)
         assert counter_element.text == "2", f"El valor del contador es '{counter_element.text}', pero se esperaba '2'."
 
+    # CORRECCIÓN
     def test_taxi_modal_appears(self):
         self.routes_page.click_reserve_button()
         self.routes_page.is_taxi_modal_visible()
         search_taxi_modal_element = self.routes_page.driver.find_element(*self.routes_page.search_taxi_modal)
         assert search_taxi_modal_element.is_displayed(), "El modal de búsqueda de taxi no está visible después de reservar el taxi."
 
+    # CORRECCIÓN
     def test_driver_information_in_modal(self):
         self.routes_page.is_driver_info_visible_in_modal()
         driver_info_visible = self.routes_page.driver.find_element(*self.routes_page.driver_icon)

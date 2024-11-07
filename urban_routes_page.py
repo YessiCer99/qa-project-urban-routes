@@ -24,8 +24,7 @@ class UrbanRoutesPage:
     close_payment_modal_button = (By.CSS_SELECTOR, '#root > div > div.payment-picker.open > div.modal > div.section.active > button') # localizador para cerrar la ventana de método de pago
     credit_card_text = (By.CLASS_NAME, 'pp-value-text')
     comment_input = (By.ID, 'comment') # Localizador del campo de comentario
-    #request_blanket_tissues_checkbox = (By.CSS_SELECTOR, '#root > div > div.workflow > div.workflow-subcontainer > div.tariff-picker.shown > div.form > div.reqs.open > div.reqs-body > div:nth-child(1) > div > div.r-sw > div > span') # Localizador del checkbox para pedir manta y pañuelos
-    request_blanket_tissues_checkbox = (By.XPATH, '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[2]/div[4]/div[2]/div[1]/div/div[2]/div/input')
+    request_blanket_tissues_checkbox = (By.CSS_SELECTOR, '#root > div > div.workflow > div.workflow-subcontainer > div.tariff-picker.shown > div.form > div.reqs.open > div.reqs-body > div:nth-child(1) > div > div.r-sw > div > span') # Localizador del checkbox para pedir manta y pañuelos
     request_ice_cream_plus_button = (By.CSS_SELECTOR, '#root > div > div.workflow > div.workflow-subcontainer > div.tariff-picker.shown > div.form > div.reqs.open > div.reqs-body > div.r.r-type-group > div > div.r-group-items > div:nth-child(1) > div > div.r-counter > div > div.counter-plus') # Localizador del botón + para pedir helados
     counter_value = (By.CSS_SELECTOR, 'div.counter-value')  # Localizador para el contador de clics
     reserve_button = (By.CSS_SELECTOR, 'button.smart-button') # Localizador para el botón "Reservar"
@@ -101,7 +100,7 @@ class UrbanRoutesPage:
         close_payment_modal_button_element = self.wait.until(ec.element_to_be_clickable(self.close_payment_modal_button))
         close_payment_modal_button_element.click()
 
-    # Método para escribir un mensaje para el controlador
+    # Método para escribir un mensaje para el conductor
     def write_message_for_driver(self, message):
         # Desplazarse al campo de comentario
         comment_input_element = self.driver.find_element(*self.comment_input)
@@ -130,11 +129,12 @@ class UrbanRoutesPage:
     def click_reserve_button(self):
         self.driver.find_element(*self.reserve_button).click()
 
-    #Método para esperar a que aparezca la información del conductor
+    #Método para esperar a que aparezca el modal
     def is_taxi_modal_visible(self):
         # Esperar hasta que aparezca el modal de búsqueda del taxi
         self.wait.until(ec.visibility_of_element_located(self.search_taxi_modal))
 
+    # Método para esperar a que aparezca la información del conductor
     def is_driver_info_visible_in_modal(self):
         # Esperar hasta que aparezca el ícono del conductor (25 segundos máximo)
         WebDriverWait(self.driver, 40).until(ec.presence_of_element_located(self.driver_icon))
