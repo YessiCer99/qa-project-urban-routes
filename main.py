@@ -57,7 +57,7 @@ class TestUrbanRoutes:
     # CORRECCIÓN
     def test_request_blanket_and_tissues(self):
         self.routes_page.request_blanket_and_tissues()
-        blanket_tissues_checkbox = self.routes_page.driver.find_element(*self.routes_page.request_blanket_tissues_checkbox)
+        blanket_tissues_checkbox = self.routes_page.driver.find_element(*self.routes_page.request_checkbox_assert)
         assert blanket_tissues_checkbox.is_selected(), "El checkbox de mantas y pañuelos no está seleccionado."
 
     # CORRECCIÓN

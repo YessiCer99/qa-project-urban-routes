@@ -25,6 +25,7 @@ class UrbanRoutesPage:
     credit_card_text = (By.CLASS_NAME, 'pp-value-text')
     comment_input = (By.ID, 'comment') # Localizador del campo de comentario
     request_blanket_tissues_checkbox = (By.CSS_SELECTOR, '#root > div > div.workflow > div.workflow-subcontainer > div.tariff-picker.shown > div.form > div.reqs.open > div.reqs-body > div:nth-child(1) > div > div.r-sw > div > span') # Localizador del checkbox para pedir manta y pañuelos
+    request_checkbox_assert = (By.XPATH, '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[2]/div[4]/div[2]/div[1]/div/div[2]/div/input')
     request_ice_cream_plus_button = (By.CSS_SELECTOR, '#root > div > div.workflow > div.workflow-subcontainer > div.tariff-picker.shown > div.form > div.reqs.open > div.reqs-body > div.r.r-type-group > div > div.r-group-items > div:nth-child(1) > div > div.r-counter > div > div.counter-plus') # Localizador del botón + para pedir helados
     counter_value = (By.CSS_SELECTOR, 'div.counter-value')  # Localizador para el contador de clics
     reserve_button = (By.CSS_SELECTOR, 'button.smart-button') # Localizador para el botón "Reservar"
